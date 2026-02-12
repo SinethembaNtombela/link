@@ -1,8 +1,2 @@
-/flask_app
-    /static
-        style.css
-        image.jpg
-    /templates
-        index.html
-    app.py
-    requirements.txt
+flask
+gunicorn
