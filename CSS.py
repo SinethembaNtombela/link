@@ -1,0 +1,76 @@
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Valentines Day</title>
+        <style>
+            body {
+                background-image: url('your_background_image.jpg'); /* Set the background image URL */
+                background-size: cover;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 100%;
+                margin: 0;
+            }
+
+            #video-container
+            {
+                display: none;
+            }
+
+            #text-container
+            {
+                text-align: center;
+                color: white;
+            }
+
+            button {
+                margin: 10px;
+                padding: 10px;
+                font-size: 16px;
+            }
+        </style>
+    </head>
+    <body>
+
+    <button id="open-button" onclick="showVideo()">Open Me</button>
+
+    <div id="video-container">
+        <video width="400" height="300" controls>
+            <source src="your_short_clip.mp4" type="video/mp4"> <!-- Set the short clip video URL -->
+            Your browser does not support the video tag.
+        </video>
+
+        <div id="text-container">
+            <p>Will you be my Valentine?</p>
+            <button onclick="answer('Yes')">Yes</button>
+            <button onclick="answer('No')">No</button>
+        </div>
+    </div>
+
+    <script>
+        function showVideo() {
+            document.getElementById('open-button').style.display = 'none';
+            document.getElementById('video-container').style.display = 'block';
+        }
+
+        function answer(response) {
+            alert('You chose: ' + response);
+        }
+    </script>
+
+    </body>
+    </html>

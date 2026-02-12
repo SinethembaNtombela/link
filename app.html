@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Valentine's Day</title>
+</head>
+<body style="background-image: url('{{ url_for('static', filename='Picture.jpg') }}');">
+    <div id="content" class="hidden">
+        <video controls width="400" height="300">
+            <source src="{{ url_for('static', filename='Clip.mp4') }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div id="question">
+            <p>Will you be my Valentine?</p>
+            <button onclick="answer('yes')">Yes</button>
+            <button onclick="answer('no')">No</button>
+        </div>
+    </div>
+    <button id="openButton" onclick="openContent()">Open Me</button>
+    <script>
+        function openContent() {
+            document.getElementById('content').classList.remove('hidden');
+            document.getElementById('openButton').style.display = 'none';
+        }
+
+        function answer(choice) {
+            alert('You chose: ' + choice);
+        }
+    </script>
+</body>
+</html>

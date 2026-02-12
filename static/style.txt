@@ -1,0 +1,75 @@
+/* Add styling for the "Thank You!" text */
+#thankYouText {
+    font-size: 36px; /* Adjust the size as needed */
+    font-weight: bold;
+    color: white;
+    margin-top: 20px;
+}
+
+
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+
+#content {
+    text-align: center;
+    color: white;
+    display: none;
+}
+
+/* Hide play and stop buttons, keep volume control */
+#valentineVideo::-webkit-media-controls-play-button,
+#valentineVideo::-webkit-media-controls-stop-button {
+    display: none !important;
+}
+
+#valentineVideo::-webkit-media-controls-volume-slider {
+    display: inline-block !important;
+}
+
+#valentineVideo::-webkit-media-controls-mute-button {
+    display: inline-block !important;
+}
+
+/* Hide play and stop buttons for Firefox */
+#valentineVideo::-moz-range-thumb {
+    display: none !important;
+}
+
+#valentineVideo::-moz-range-track {
+    display: none !important;
+}
+
+
+
+#question {
+    margin-top: 20px;
+}
+
+#question p {
+    font-size: 24px; /* Adjust the size as needed */
+    font-weight: bold;
+}
+
+#question button {
+    font-size: 18px; /* Adjust the size as needed */
+    font-weight: bold;
+    padding: 10px 20px; /* Adjust the padding as needed */
+}
+
+#openButton {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 15px 30px;
+}
+
+.hidden {
+    display: none;
+}
