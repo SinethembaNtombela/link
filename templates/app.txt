@@ -7,7 +7,7 @@
     <title>Valentines Day</title>
     <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 </head>
-<body style="background-image: url('{{ url_for('static', filename='background.jpg') }}');">
+<body class="bg-sad">
     <div id="content" class="hidden">
         <video id="valentineVideo" autoplay loop width="600" height="500">
             <source src="{{ url_for('static', filename='short_clip.mp4') }}" type="video/mp4">
@@ -28,10 +28,14 @@
     });
 
     function openContent() {
-        document.getElementById('valentineVideo').play();
-        document.getElementById('content').style.display = 'block';
-        document.getElementById('openButton').style.display = 'none';
-    }
+  // Switch background from sad.gif to background.jpg
+  document.body.classList.remove('bg-sad');
+  document.body.classList.add('bg-happy');
+
+  document.getElementById('valentineVideo').play();
+  document.getElementById('content').style.display = 'block';
+  document.getElementById('openButton').style.display = 'none';
+}
 
     function answer(choice) {
         if (choice === 'yes') {
