@@ -1,46 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <title>Valentines Day</title>
-    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <title>Valentines Day</title>
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
 </head>
-<body style="background-image: url('{{ url_for('static', filename='background.jpg') }}');">
-    <div id="content" class="hidden">
-        <video id="valentineVideo" autoplay loop width="600" height="500">
-            <source src="{{ url_for('static', filename='short_clip.mp4') }}" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <div id="question">
-            <p>Will you be my Valentine?</p>
-            <button onclick="answer('yes')">Yes</button>
-            <button onclick="answer('yes')">Yes</button>
-        </div>
-        <!-- Add the "Thank You!" text -->
-        <div id="thankYouText" class="hidden">Thank You!</div>
-    </div>
-    <button id="openButton" onclick="openContent()">Open Me</button>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-        document.getElementById('openButton').addEventListener("click", openContent);
-    });
 
+<body class="bg-sad">
+  <div id="content" class="hidden">
+    <video id="valentineVideo" autoplay loop width="600" height="500">
+      <source src="{{ url_for('static', filename='short_clip.mp4') }}" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <div id="question">
+      <p>Will you be my Valentine?</p>
+      <button onclick="answer('yes')">Yes</button>
+      <button onclick="answer('yes')">Yes</button>
+    </div>
+
+    <div id="thankYouText" class="hidden">Thank You!</div>
+  </div>
+
+  <button id="openButton" onclick="openContent()">Open Me</button>
+
+  <script>
     function openContent() {
-        document.getElementById('valentineVideo').play();
-        document.getElementById('content').style.display = 'block';
-        document.getElementById('openButton').style.display = 'none';
+      // switch background gif -> photo
+      document.body.classList.remove('bg-sad');
+      document.body.classList.add('bg-happy');
+
+      document.getElementById('valentineVideo').play();
+      document.getElementById('content').style.display = 'block';
+      document.getElementById('openButton').style.display = 'none';
     }
 
     function answer(choice) {
-        if (choice === 'yes') {
-            document.getElementById('question').style.display = 'none'; // Hide the "Will you be my Valentine?" section
-            document.getElementById('thankYouText').classList.remove('hidden'); // Display the "Thank You!" text
-        } else {
-            alert('You chose: ' + choice);
-        }
+      if (choice === 'yes') {
+        document.getElementById('question').style.display = 'none';
+        document.getElementById('thankYouText').classList.remove('hidden');
+      } else {
+        alert('You chose: ' + choice);
+      }
     }
-    </script>
+  </script>
 </body>
 </html>
