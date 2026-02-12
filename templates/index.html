@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   <title>Valentines Day</title>
   <link rel="icon" href="data:;base64,iVBORw0KGgo=">
@@ -15,36 +16,55 @@
       Your browser does not support the video tag.
     </video>
 
-    <div id="question">
-      <p>Will you be my Valentine?</p>
-      <button onclick="answer('yes')">Yes</button>
-      <button onclick="answer('yes')">Yes</button>
-    </div>
+<div id="question">
+  <p>Will you be my Valentine?</p>
+
+  <div class="btn-row">
+    <button class="heart-btn" onclick="answer('yes')"><span>Yes</span></button>
+    <button class="heart-btn" onclick="answer('yes')"><span>Yes</span></button>
+  </div>
+</div>
+
+
+
 
     <div id="thankYouText" class="hidden">Thank You!</div>
   </div>
 
   <button id="openButton" onclick="openContent()">Open Me</button>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 
-  <script>
-    function openContent() {
-      // switch background gif -> photo
-      document.body.classList.remove('bg-sad');
-      document.body.classList.add('bg-happy');
 
-      document.getElementById('valentineVideo').play();
-      document.getElementById('content').style.display = 'block';
-      document.getElementById('openButton').style.display = 'none';
+<script>
+  function openContent() {
+    document.body.classList.remove('bg-sad');
+    document.body.classList.add('bg-happy');
+
+    document.getElementById('valentineVideo').play();
+    document.getElementById('content').style.display = 'block';
+    document.getElementById('openButton').style.display = 'none';
+  }
+
+  function answer(choice) {
+    if (choice === 'yes') {
+      document.getElementById('question').style.display = 'none';
+      document.getElementById('thankYouText').classList.remove('hidden');
+
+      // Fireworks burst (confetti)
+      confetti({
+        particleCount: 180,
+        spread: 90,
+        origin: { y: 0.65 }
+      });
+
+      // A few extra bursts to feel like fireworks
+      setTimeout(() => confetti({ particleCount: 120, spread: 120, origin: { y: 0.55 } }), 250);
+      setTimeout(() => confetti({ particleCount: 120, spread: 120, origin: { y: 0.55 } }), 500);
+    } else {
+      alert('You chose: ' + choice);
     }
+  }
+</script>
 
-    function answer(choice) {
-      if (choice === 'yes') {
-        document.getElementById('question').style.display = 'none';
-        document.getElementById('thankYouText').classList.remove('hidden');
-      } else {
-        alert('You chose: ' + choice);
-      }
-    }
-  </script>
 </body>
 </html>
